@@ -1,0 +1,120 @@
+.task-container{
+  height: 85px;
+  font-size: 48px;
+  font-weight: 900;
+  border-radius: 10px;
+  border: none;
+  background: #e3e3e3;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  justify-content: space-between;
+
+  transition: all .1s ease;
+}
+
+
+/* IF CHECKED */
+.task-container.checked{
+  background: #d7d7d7;
+}
+
+.task-container.checked .task-text{
+  text-decoration: line-through;
+  font-style: italic;
+}
+.task-container.checked .task-checkbox .checkbox-img{
+  position: absolute;
+  width: 90px;
+  height: 90px;
+
+  top: -27px;
+  left: -25px;
+
+  background-image: url(../../assets/checkmark.png);
+  background-size: cover;
+  background-position: center;
+}
+.task-container.edit-mode{
+  border: 3px solid rgba(253, 99, 99, 0.1);
+  border-style: dashed;
+  background: #e8e0e0;
+}
+
+
+
+
+.task-text{
+  color: #2c2c2c;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 0 17px;
+  height: 100%;
+  width: 90%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.task-text-input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  background: #ececec;
+  font-size: 21px;
+}
+
+.task-opt-btn{
+  height: 100%;
+  padding: 10px 17px;
+  font-size: 21px;
+  font-weight: 500;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-weight: 500;
+  transition: all .25s ease;
+}
+.task-opt-btn.save{
+  background: #008eed;
+  
+  &:hover{
+    background: #09f;
+    scale: 1.02;
+  }
+  &:active{
+    background: #008eed;
+    scale: 1;
+  }
+}
+.task-opt-btn.delete{
+  background: #ed1a3d;
+  
+  &:hover{
+    background: #fd2b4e;
+    scale: 1.02;
+  }
+  &:active{
+    background: #ed1a3d;
+    scale: 1;
+  }
+}
+
+
+.task-checkbox{
+  width: 40px;
+  height: 40px;
+  border: 5px solid #cacaca;
+  border-radius: 7px;
+  position: relative;
+  margin-right: 10px;
+  overflow: visible;
+  transition: scale .3s ease;
+  &:active{
+    scale: 1.12;
+  }
+}
