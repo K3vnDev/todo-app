@@ -19,7 +19,6 @@
 .task-container.checked{
   background: #d7d7d7;
 }
-
 .task-container.checked .task-text{
   text-decoration: line-through;
   font-style: italic;
@@ -36,14 +35,15 @@
   background-size: cover;
   background-position: center;
 }
+
 .task-container.edit-mode{
   border: 3px solid rgba(253, 99, 99, 0.1);
   border-style: dashed;
   background: #e8e0e0;
 }
-
-
-
+.task-checkbox{
+  cursor: pointer;
+}
 
 .task-text{
   color: #2c2c2c;
@@ -51,8 +51,12 @@
   font-weight: 500;
   padding: 0 17px;
   height: 100%;
-  width: 90%;
+  max-width: 90%;
+  
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
   display: flex;
   align-items: center;
   user-select: none;
@@ -63,45 +67,47 @@
   border: none;
   outline: none;
   border-radius: 8px;
-  padding: 0 20px;
+  padding: 10px 20px;
   background: #ececec;
   font-size: 21px;
 }
 
+:root{
+  --opt-btn-size: 48px;
+  --opt-btn-blue: #017bcd;
+  --opt-btn-red: #d10023;
+}
+
 .task-opt-btn{
-  height: 100%;
+  height: var(--opt-btn-size);
+  width: var(--opt-btn-size);
   padding: 10px 17px;
-  font-size: 21px;
-  font-weight: 500;
   border: none;
-  border-radius: 7px;
-  color: white;
-  font-weight: 500;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: currentColor;
+
   transition: all .25s ease;
+  &:hover{
+    filter: brightness(120%);
+    box-shadow: 0 0 2px currentColor;
+    scale: 1.03;
+  }
+  &:active{
+    filter: brightness(95%);
+    scale: .9;
+  }
 }
 .task-opt-btn.save{
-  background: #008eed;
-  
-  &:hover{
-    background: #09f;
-    scale: 1.02;
-  }
-  &:active{
-    background: #008eed;
-    scale: 1;
-  }
+  color: var(--opt-btn-blue);
 }
 .task-opt-btn.delete{
-  background: #ed1a3d;
-  
-  &:hover{
-    background: #fd2b4e;
-    scale: 1.02;
-  }
-  &:active{
-    background: #ed1a3d;
-    scale: 1;
-  }
+  color: var(--opt-btn-red);
+}
+.task-opt-btn svg{
+  scale: 2.6;
 }
 
 

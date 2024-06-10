@@ -1,0 +1,153 @@
+.lists-section{
+  width: 400px;
+  left: 5vw;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  color: white;
+  position: fixed;
+}
+
+.lists-section h1{
+  font-size: 78px;
+}
+
+.lists-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lists-menu h3{
+  font-size: 28px;
+  font-weight: 500;
+  opacity: .85;
+}
+
+.lists-menu ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+:root{
+  --white-02: rgb(255 255 255 / .02);
+  --white-05: rgb(255 255 255 / .05);
+  --white-10: rgb(255 255 255 / .1);
+  --white-15: rgb(255 255 255 / .15);
+  --white-20: rgb(255 255 255 / .2);
+  --white-25: rgb(255 255 255 / .25);
+}
+
+
+.lists-menu ul li{
+  list-style: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  width: 320px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  background: var(--white-05);
+  border: 1px solid var(--white-10);
+  box-shadow: 0 0 3px var(--white-10);
+  position: relative;
+  overflow: hidden;
+
+  transition: all .2s ease;
+}
+
+.lists-menu span{
+  font-size: 18px;
+  overflow: hidden;
+  user-select: none;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+
+  transition: all .2s ease;
+}
+  
+.lists-menu ul li.selected{
+  background: var(--white-10);
+  border: 1px solid var(--white-25);
+  margin-left: 14px;
+  &:active{
+    scale: .98;
+  }
+}
+.lists-menu ul li.selected span{
+  font-size: 22px;
+}
+  
+.lists-menu ul li.non-selected{
+  &:hover{
+    box-shadow: 0 0 10px var(--white-15);
+    border: 1px solid var(--white-15);
+  }
+  &:active{
+    box-shadow: none;
+    opacity: .75;
+    scale: .9;
+  }
+}
+
+
+.lists-menu ul li .shine-deco{
+  position: absolute;
+  height: 200px;
+  width: 100px;
+  background: rgb(255 255 255 / .05);
+  rotate: 30deg;
+  top: -80px;
+  left: -120px;
+  transition: all .6s ease-out;
+}
+
+.lists-menu ul li:hover .shine-deco{
+  left: 220px;
+  opacity: 0;
+}
+
+.lists-menu ul li .color-box{
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+}
+
+
+.lists-menu button {
+  width: 70px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--white-02);
+  border: 1px solid var(--white-10);
+  box-shadow: 0 0 3px var(--white-05);
+  cursor: pointer;
+
+  &:hover{
+    border: 1px solid var(--white-15);
+    box-shadow: 0 0 3px var(--white-10);
+  }
+  &:active{
+    transform: translateY(10px);
+  }
+  transition: all .2s ease;
+}
+
+.lists-menu button svg{
+  scale: 1.8;
+  transition: all .3s ease;
+}
+.lists-menu button:hover svg{
+  scale: 2.2;
+}
+.lists-menu button:active svg{
+  scale: 1.5;
+}
