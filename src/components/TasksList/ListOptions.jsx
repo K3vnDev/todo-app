@@ -14,6 +14,10 @@ export function ListOptions ({ color }) {
     : 'list-options expanded'
 
   const handleCollapse = e => {
+    if (e.target.className === 'more-btn') {
+      setCollapsed(c => !c)
+      return
+    }
     setCollapsed(!optionsRef.current.contains(e.target))
   }
 
@@ -30,10 +34,7 @@ export function ListOptions ({ color }) {
       ref={optionsRef}
     >
       <div className='buttons'>
-        <MoreButton
-          collapsed={collapsed}
-          setCollapsed={setCollapsed}
-        />
+        <MoreButton collapsed={collapsed} />
         <ColorButton color={color} />
         <DeleteButton
           collapsed={collapsed}
@@ -43,16 +44,9 @@ export function ListOptions ({ color }) {
   )
 }
 
-function MoreButton ({ collapsed, setCollapsed }) {
-  const handleClick = () => {
-    setCollapsed(c => !c ? !c : c)
-  }
-
+function MoreButton ({ collapsed }) {
   return (
-    <button
-      onClick={handleClick}
-      className='more-btn'
-    >
+    <button className='more-btn'>
       {
         collapsed
           ? <MoreIcon />
