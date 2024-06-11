@@ -89,16 +89,41 @@ export function Task ({ i }) {
 
 function InputText ({ textChangeHandler, prevText }) {
   const inputRef = useRef()
+  const { setEditMode } = useListsContext()
+
+  const resizeScroll = () => {
+    const { current } = inputRef
+    current.style.height = 'auto'
+    current.style.height = current.scrollHeight + 'px'
+    current.setSelectionRange(current.value.length, current.value.length)
+  }
+
+  const handleChange = (e) => {
+    textChangeHandler(e)
+    resizeScroll()
+  }
+
   useEffect(() => {
     inputRef.current.focus()
+    resizeScroll()
+
+    const onKeyDown = e => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        setEditMode(-1)
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
   }, [])
 
   return (
-    <input
+    <textarea
+      rows='1'
       type='text'
       className='task-text-input'
       ref={inputRef}
-      onChange={textChangeHandler}
+      onChange={handleChange}
       value={prevText}
     />
   )
