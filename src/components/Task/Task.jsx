@@ -112,7 +112,6 @@ function InputText ({ textChangeHandler, prevText }) {
         setEditMode(-1)
       }
     }
-
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [])
