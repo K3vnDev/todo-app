@@ -7,6 +7,16 @@ const listsFromStorage = JSON.parse(window.localStorage.getItem('lists'))
 const selectedListFromStorage = window.localStorage.getItem('selectedList')
 const initialListId = generateId([])
 
+const getInitialSelectedListState = () => {
+  if (selectedListFromStorage && listsFromStorage) {
+    return selectedListFromStorage
+  }
+  if (!listsFromStorage) {
+    return initialListId
+  }
+  return null
+}
+
 export function ListsContextProvider ({ children }) {
   const [lists, setLists] = useState(
     listsFromStorage ??
@@ -17,9 +27,7 @@ export function ListsContextProvider ({ children }) {
       tasks: []
     }]
   )
-  const [selectedList, setSelectedList] = useState(
-    selectedListFromStorage ?? initialListId
-  )
+  const [selectedList, setSelectedList] = useState(getInitialSelectedListState())
   const [editMode, setEditMode] = useState(-1)
 
   return (
