@@ -91,21 +91,24 @@ function InputText ({ textChangeHandler, prevText }) {
   const inputRef = useRef()
   const { setEditMode } = useListsContext()
 
-  const resizeScroll = () => {
+  const resizeScroll = setCursor => {
     const { current } = inputRef
     current.style.height = 'auto'
     current.style.height = current.scrollHeight + 'px'
-    current.setSelectionRange(current.value.length, current.value.length)
+
+    if (setCursor) {
+      current.setSelectionRange(current.value.length, current.value.length)
+    }
   }
 
   const handleChange = (e) => {
     textChangeHandler(e)
-    resizeScroll()
+    resizeScroll(false)
   }
 
   useEffect(() => {
     inputRef.current.focus()
-    resizeScroll()
+    resizeScroll(true)
 
     const onKeyDown = e => {
       if (e.key === 'Enter' && !e.shiftKey) {
